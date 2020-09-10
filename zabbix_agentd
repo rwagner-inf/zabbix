@@ -51,7 +51,8 @@ start()
 stop()
 {
     echo -n $"Shutting down Zabbix agent: "
-    killproc -p $pidfile -d $timeout $prog
+    #killproc -p $pidfile -d $timeout $prog
+    killproc zabbix_agentd -HUP
     rv=$?
     echo
     [ $rv -eq 0 ] && rm -f $lockfile
